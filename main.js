@@ -13,7 +13,7 @@ var request = require('request');
 var fs = require('fs');
 var jsdom = require('jsdom');
 var regex = /@?Hakata[,:]? \.(.+)/;
-var allowedIrc = ['r3c0d3x']; // just for admin stuff
+var allowedIrc = []; // just for admin stuff
 var processing = false;
 var client = new irc.Client(config.server, config.name, {
     port: config.port,
