@@ -12,13 +12,13 @@ var async = require('async');
 var request = require('request');
 var fs = require('fs');
 var jsdom = require('jsdom');
-var regex = /@?Hakata[,:]? \.(.+)/;
+var regex = /^\.(.+)$/;
 var allowedIrc = []; // just for admin stuff
 var processing = false;
 var client = new irc.Client(config.server, config.name, {
     port: config.port,
     userName: config.name,
-    realName: 'Hakata',
+    realName: config.name,
     secure: config.ssl,
     selfSigned: config.dealWithSSL,
     certExpired: config.dealWithSSL,
@@ -190,7 +190,7 @@ client.addListener('message' + config.channel, function(nick, text, message) {
 
     if (nick == 'dscb') {
         prefix = '@';
-        var res = /<([\w\d\s]+)> ?@?Hakata[,:]? \.(.+)/.exec(text);
+        var res = /^<([\w\d\s]+)> \.(.+)$/.exec(text);
         if (res != null) {
             name = res[1];
             cmd = res[2];
