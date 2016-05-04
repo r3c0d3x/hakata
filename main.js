@@ -13,7 +13,7 @@ var request = require('request');
 var fs = require('fs');
 var jsdom = require('jsdom');
 var regex = /^\.(.+)$/;
-var allowedIrc = []; // just for admin stuff
+var allowedIrc = [];
 var processing = false;
 var client = new irc.Client(config.server, config.name, {
     port: config.port,
@@ -85,7 +85,6 @@ generateQueue('links', function(opts) {
                         var count = 0;
                         Array.prototype.slice.call(document.querySelectorAll(selector)).forEach(function(curr) {
                             count++;
-                            //console.log(curr.href);
                             urls.push(curr.href);
                         });
                         if (engine == 'bing') {
